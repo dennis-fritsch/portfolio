@@ -28,6 +28,8 @@ const Food = () => {
 
   const dishes = data?.dishes ?? []
 
+  console.log('testcommit')
+
   return (
     <>
       {dishes.map((dish: DishProps) => {
