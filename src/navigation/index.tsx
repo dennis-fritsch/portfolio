@@ -6,7 +6,19 @@ import Food from 'features/Food'
 import Portfolio from 'features/Portfolio'
 import Photography from 'features/Photography'
 
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+
 export default function Navigation() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    // When the user scrolled down - they should be jump back to the top after navigating
+    if (window?.scrollY) {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname])
+
   return (
     <Routes>
       <Route path={ROUTES.home}>
