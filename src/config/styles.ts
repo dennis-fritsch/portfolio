@@ -2,6 +2,7 @@ interface ColorTypes {
   primary: string
   primaryLight: string
   primaryDark: string
+  primaryTransparent: string
   secondary: string
   secondaryDark: string
   white: string
@@ -23,6 +24,7 @@ export const COLORS: ColorTypes = {
   primary: '#3D348B',
   primaryLight: '#7678ED',
   primaryDark: '#241F51',
+  primaryTransparent: '#241F51d0',
   secondary: '#F7B801',
   secondaryDark: '#F18701',
   white: '#fff',

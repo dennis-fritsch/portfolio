@@ -30,7 +30,11 @@ const PAGES_DATA = gql`
   }
 `
 
-const StyledWrapper = styled('div')`
+const StyledRow = styled(Row)`
+  margin-top: 1rem;
+`
+
+const StyledLeftColumnWrapper = styled('div')`
   background-color: ${COLORS.primaryDark};
   padding: 0.5rem;
 `
@@ -53,13 +57,20 @@ const StyledImageWrapper = styled('div')`
 const StyledImage = styled('img')`
   width: 100%;
   z-index: 1;
+  border: 1px solid ${COLORS.secondary};
 `
 
 const StyledTitle = styled(Title)`
   z-index: 3;
   position: absolute;
-  bottom: 0;
+  top: -2rem;
+  left: 1rem;
+  right: 1rem;
   padding: 1rem;
+  background: ${COLORS.primaryTransparent};
+  border: 1px solid ${COLORS.secondary};
+  border-radius: 30px;
+  text-align: center;
 `
 
 const Gradient = styled('div')`
@@ -67,7 +78,7 @@ const Gradient = styled('div')`
   left: 0;
   right: 0;
   bottom: 0;
-  height: 12rem;
+  height: 8rem;
   background: rgb(0, 0, 0);
   background: linear-gradient(
     0deg,
@@ -96,23 +107,23 @@ const Food = () => {
         const descr = description?.raw ?? []
 
         return (
-          <Row gutter={20}>
+          <StyledRow gutter={20}>
             <Col xs={24} sm={16} lg={16}>
-              <StyledWrapper>
+              <StyledLeftColumnWrapper>
                 <StyledImageWrapper className="animate blur">
-                  <Gradient />
-                  <StyledTitle level={1}>{title}</StyledTitle>
+                  <StyledTitle level={2}>{title}</StyledTitle>
                   <StyledImage src={image.url} />
+                  <Gradient />
                 </StyledImageWrapper>
                 <StyledContent className="animate blur">
                   <RichText content={descr} renderers={richTextRenderer} />
                 </StyledContent>
-              </StyledWrapper>
+              </StyledLeftColumnWrapper>
             </Col>
             <Col xs={24} sm={8} lg={8}>
               <StyledSideBar />
             </Col>
-          </Row>
+          </StyledRow>
         )
       })}
       <ImageNav currentRoute={ROUTES.food} />
