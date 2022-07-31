@@ -1,5 +1,5 @@
 import ImageNav from 'components/ImageNav'
-import { ROUTES } from 'config/routes'
+import { ROUTES } from 'navigation/routes'
 
 const Photography = () => {
   return (

@@ -1,11 +1,8 @@
 import { Anchor, Row, Col, Typography } from 'antd'
 import styled from 'styled-components'
 import ImageNav from 'components/ImageNav'
-import { ROUTES } from 'config/routes'
-import ContentBox from 'components/ContentBox'
+import { ROUTES } from 'navigation/routes'
 import Rating from 'components/Rating'
-import EHoiImage from 'assets/portfolio/e-hoi.png'
-import ApicodoImage from 'assets/portfolio/apicodo.png'
 import Avatar from 'components/Avatar'
 import AvatarImageEhoi from 'assets/avatar/e-hoi.png'
 import AvatarImageApicodo from 'assets/avatar/apicodo.png'
@@ -39,7 +36,7 @@ const Portfolio = () => {
             </Link>
           </Anchor>
         </Col>
-        <Col xs={24} sm={18} lg={20}>
+        <Col xs={24} sm={18} lg={20} className="animate blur">
           <StyledSection>
             <Title id="skills">Skills</Title>
             <Row gutter={60}>

@@ -1,7 +1,7 @@
 import Camera from 'assets/camera.png'
 import Pizza from 'assets/pizza.jpg'
 import Portfolio from 'assets/portfolio.png'
-import { ROUTES } from 'config/routes'
+import { ROUTES } from 'navigation/routes'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
 import ContentBox from 'components/ContentBox'

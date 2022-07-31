@@ -1,8 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { ROUTES } from 'config/routes'
+import { ROUTES } from 'navigation/routes'
 import Home from 'features/Home'
 import NotFound from 'features/NotFound'
 import Food from 'features/Food'
+import Dish from 'features/Dish'
 import Portfolio from 'features/Portfolio'
 import Photography from 'features/Photography'
 
@@ -25,6 +26,7 @@ export default function Navigation() {
         <Route index element={<Home />} />
       </Route>
       <Route path={ROUTES.food} element={<Food />} />
+      <Route path={ROUTES.dish} element={<Dish />} />
       <Route path={ROUTES.portfolio} element={<Portfolio />} />
       <Route path={ROUTES.photography} element={<Photography />} />
       <Route path={ROUTES.notFound} element={<NotFound />} />
