@@ -79,7 +79,12 @@ export default function App() {
         <StyledLayout>
           <Content>
             <Row>
-              <Col span={18} offset={3}>
+              <Col
+                xs={{ span: 22, offset: 1 }}
+                sm={{ span: 20, offset: 2 }}
+                lg={{ span: 18, offset: 3 }}
+                xxl={{ span: 16, offset: 4 }}
+              >
                 <Avatar navigateTo={ROUTES.home} />
                 <StyledMainContent>
                   <Navigation />
