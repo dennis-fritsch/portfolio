@@ -5,12 +5,18 @@ import { useNavigate } from 'react-router-dom'
 
 const { Title } = Typography
 
+export enum SIZES {
+  small = 'small',
+  medium = 'medium',
+}
+
 type Props = {
   style?: React.CSSProperties
   navigateTo?: string
   linkTo?: string
   backgroundImage: string
   title?: string
+  size?: SIZES.small | SIZES.medium
 }
 
 const ContentBox = ({
@@ -19,6 +25,7 @@ const ContentBox = ({
   linkTo,
   backgroundImage,
   title,
+  size = SIZES.medium,
 }: Props) => {
   const navigate = useNavigate()
 
@@ -27,7 +34,7 @@ const ContentBox = ({
     border-radius: 0.5rem;
     overflow: hidden;
     border-color: ${COLORS.primary};
-    height: 12rem;
+    height: ${size === SIZES.small ? '8' : '12'}rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,9 +75,6 @@ const ContentBox = ({
     }
   }
 
-  // https://www.svgbackgrounds.com/
-  // TODO: Text is not displayed
-
   return (
     <StyledBox
       hoverable={!!navigateTo || !!linkTo}
@@ -81,10 +85,9 @@ const ContentBox = ({
       onClick={handleClick}
     >
       <Gradient />
-      {/* children || null */}
       {title && (
         <Title
-          level={3}
+          level={size === SIZES.small ? 4 : 3}
           style={{
             color: '#fff',
             textAlign: 'center',

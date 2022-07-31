@@ -52,10 +52,14 @@ export default function App() {
             background-color: ${COLORS.primaryDark};
           }
           a,
+          .ant-typography a,
+          a.ant-typography,
           a.ant-anchor-link-title {
             color: ${COLORS.secondary}
           }
           a:hover,
+          .ant-typography a:hover,
+          a.ant-typography:hover,
           .ant-anchor-link-active > .ant-anchor-link-title {
             color: ${COLORS.secondaryDark};
           }
