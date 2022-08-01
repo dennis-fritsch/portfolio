@@ -11,6 +11,9 @@ const { Title, Text } = Typography
 
 const { Link } = Anchor
 
+// TODO: Add transparent background behind anchor - for mobile
+// TODO: Skill dots look weird on mobile
+
 const StyledSection = styled('div')`
   margin-bottom: 5rem;
 `
