@@ -7,4 +7,3 @@ logs
 **/*.back.*
 
 node_modules
-build
