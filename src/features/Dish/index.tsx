@@ -1,4 +1,4 @@
-import { Row, Col, Spin } from 'antd'
+import { Row, Col } from 'antd'
 import ImageNav from 'components/ImageNav'
 import { ROUTES } from 'navigation/routes'
 import { richTextRenderer } from 'config/renderer'
@@ -76,6 +76,17 @@ const StyledImage = styled('img')`
   border: 1px solid ${COLORS.secondary};
 `
 
+const StyledImageSkeleton = styled('div')`
+  height: 18rem;
+  width: 100%;
+  background-color: ${COLORS.primary};
+  border: 1px solid ${COLORS.secondary};
+`
+
+const StyledPlaceholder = styled('div')`
+  height: 20rem;
+`
+
 const StyledTitle = styled(Title)`
   z-index: 3;
   position: absolute;
@@ -122,10 +133,6 @@ const StyledLink = styled(Link)`
   font-weight: bold;
 `
 
-const StyledSpin = styled(Spin)`
-  width: 100%;
-`
-
 const StyledSideBarTitle = styled(Title)`
   &.ant-typography  {
     margin-top: 2rem;
@@ -137,7 +144,7 @@ type DishProps = {
   title?: string
   description?: any
   image?: any
-  slug: string
+  slug?: string
 }
 
 const Dish = () => {
@@ -151,7 +158,8 @@ const Dish = () => {
 
   const dish: DishProps = data?.dish ?? {}
   const { title, description, image } = dish
-  const wasNotFound = called && Object.keys(dish)?.length === 0
+
+  const wasNotFound = called && !loading && Object.keys(dish)?.length === 0
 
   const otherDishes = data?.dishes ?? []
 
@@ -160,28 +168,26 @@ const Dish = () => {
       <StyledRow gutter={20}>
         <Col xs={24} lg={16}>
           <StyledLeftColumnWrapper>
-            {loading ? (
-              <StyledSpin size="large" className="animate blur" />
-            ) : null}
-            <StyledImageWrapper className="animate blur">
-              {
-                title ? (
-                  <StyledTitle level={2}>{title}</StyledTitle>
-                ) : null /* TODO: Smaller font for mobile devices */
-              }
-              {image?.url ? (
-                <>
+            <StyledImageWrapper>
+              {title ? <StyledTitle level={2}>{title}</StyledTitle> : null}
+              <>
+                {image?.url ? (
                   <StyledImage src={image?.url} />
-                  <Gradient />
-                </>
-              ) : null}
+                ) : loading ? (
+                  <StyledImageSkeleton />
+                ) : null}
+                {!wasNotFound ? <Gradient /> : null}
+              </>
             </StyledImageWrapper>
-            <StyledContent className="animate blur">
-              <RichText
-                content={description?.raw ?? []}
-                renderers={richTextRenderer}
-              />
-              {wasNotFound ? (
+            <StyledContent>
+              {description?.raw ? (
+                <RichText
+                  content={description?.raw ?? []}
+                  renderers={richTextRenderer}
+                />
+              ) : loading ? (
+                <StyledPlaceholder />
+              ) : wasNotFound ? (
                 <StyledNoFood>
                   <StyledNoFoodIcon />
                   <Title level={4}>
