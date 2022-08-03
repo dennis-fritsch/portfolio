@@ -39,7 +39,7 @@ export enum BREAKPOINTS {
   xxl = 'xxl',
 }
 
-const BREAKPOINT_VALUES: BreakpointValueTypes = {
+export const BREAKPOINT_VALUES: BreakpointValueTypes = {
   // min-width - https://ant.design/components/grid/
   xs: 0,
   sm: 577,
