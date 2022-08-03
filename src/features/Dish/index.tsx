@@ -205,9 +205,7 @@ const Dish = () => {
         <Col xs={24} lg={8}>
           <StyledSideBar>
             {otherDishes?.length ? (
-              <StyledSideBarTitle level={4}>
-                Die letzten {otherDishes?.length} Gerichte:
-              </StyledSideBarTitle>
+              <StyledSideBarTitle level={4}>Neue Gerichte:</StyledSideBarTitle>
             ) : null}
             {otherDishes.map((dish: DishProps) => (
               <ContentBox
