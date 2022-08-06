@@ -4,7 +4,7 @@ import Portfolio from 'assets/portfolio.png'
 import { ROUTES } from 'navigation/routes'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
-import ContentBox from 'components/ContentBox'
+import ContentBox, { SIZES } from 'components/ContentBox'
 
 type Props = {
   currentRoute?: string
@@ -64,6 +64,7 @@ const ImageNav = ({ currentRoute = ROUTES.home }: Props) => {
               backgroundImage={imageData.backgroundImage}
               title={imageData.title}
               navigateTo={imageData.navigateTo}
+              size={SIZES.small}
             />
           </Col>
         )
