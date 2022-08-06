@@ -8,7 +8,7 @@ import { ROUTES } from 'navigation/routes'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import Footer from 'components/Footer'
-import Avatar from 'components/Avatar'
+import NavBar from 'components/NavBar'
 import './animate.css'
 
 const { Content } = Layout
@@ -54,7 +54,8 @@ export default function App() {
           a,
           .ant-typography a,
           a.ant-typography,
-          a.ant-anchor-link-title {
+          a.ant-anchor-link-title,
+          .ant-btn-text:focus {
             color: ${COLORS.secondary}
           }
           a:hover,
@@ -85,7 +86,7 @@ export default function App() {
                 lg={{ span: 18, offset: 3 }}
                 xxl={{ span: 16, offset: 4 }}
               >
-                <Avatar navigateTo={ROUTES.home} />
+                <NavBar />
                 <StyledMainContent>
                   <Navigation />
                 </StyledMainContent>
