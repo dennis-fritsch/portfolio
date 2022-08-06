@@ -135,8 +135,7 @@ const StyledLink = styled(Link)`
 
 const StyledSideBarTitle = styled(Title)`
   &.ant-typography  {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 `
 
