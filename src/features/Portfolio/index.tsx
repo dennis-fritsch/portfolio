@@ -53,7 +53,7 @@ const Portfolio = () => {
             </Link>
           </StyledAnchor>
         </Col>
-        <Col xs={24} sm={18} lg={20} className="animate blur">
+        <Col xs={24} sm={18} lg={20}>
           <StyledSection>
             <Title id="skills">Skills</Title>
             <Row gutter={60}>
@@ -108,7 +108,7 @@ const Portfolio = () => {
               dolor sit amet.
             </Text>
           </StyledSection>
-          <StyledSection>
+          <StyledSection id="ehoi">
             <Row>
               <Avatar
                 AvatarImage={AvatarImageEhoi}
