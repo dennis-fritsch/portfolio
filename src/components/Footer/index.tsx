@@ -70,7 +70,7 @@ const Footer = () => {
           <FooterLink
             text="GitHub"
             Icon={<FaGithub />}
-            link="https://github.com/Fridge-o"
+            link="https://github.com/dennis-fritsch"
           />
           <FooterLink
             text="Xing"
