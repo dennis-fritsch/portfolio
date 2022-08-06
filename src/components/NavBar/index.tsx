@@ -1,4 +1,4 @@
-import { Button, Typography } from 'antd'
+import { Button, Row } from 'antd'
 import styled from 'styled-components'
 import { COLORS } from 'config/styles'
 
@@ -9,18 +9,10 @@ import { MdOutlinePersonPin, MdPhotoLibrary, MdFastfood } from 'react-icons/md'
 
 import { useNavigate, useLocation } from 'react-router-dom'
 
-const { Title } = Typography
-
 const StyledWrapper = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
-
-const StyledLinks = styled('div')`
-  margin-left: 2rem;
-  display: flex;
-  flex-direction: row;
 `
 
 type Props = {
@@ -37,14 +29,6 @@ const HeaderLink = ({ text, navigateTo, Icon }: Props) => {
   const currentLocation = splittedPath?.length >= 2 ? splittedPath[1] : '/'
 
   const isActive = location?.pathname === navigateTo
-  console.log(
-    '🌽 | file: index.tsx | line 40 | HeaderLink | navigateTo',
-    navigateTo
-  )
-  console.log(
-    '🌽 | file: index.tsx | line 40 | HeaderLink | currentLocation',
-    currentLocation
-  )
 
   const StyledTextButton = styled(Button)`
     color: ${isActive ? COLORS.secondary : '#fff'};
@@ -83,7 +67,7 @@ const NavBar = () => {
   return (
     <StyledWrapper>
       <Avatar navigateTo={ROUTES.home} />
-      <StyledLinks>
+      <Row>
         <HeaderLink
           text="Portfolio"
           Icon={<MdOutlinePersonPin />}
@@ -99,7 +83,7 @@ const NavBar = () => {
           Icon={<MdFastfood />}
           navigateTo={ROUTES.food}
         />
-      </StyledLinks>
+      </Row>
     </StyledWrapper>
   )
 }
