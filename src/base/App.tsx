@@ -69,7 +69,8 @@ export default function App() {
           h2.ant-typography,
           h3.ant-typography,
           h4.ant-typography,
-          h5.ant-typography {
+          h5.ant-typography,
+          li {
             color: ${COLORS.white}
           }
         `}

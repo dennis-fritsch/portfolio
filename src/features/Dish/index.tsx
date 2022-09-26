@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
 import { RichText } from '@graphcms/rich-text-react-renderer'
 import styled from 'styled-components'
-import { COLORS } from 'config/styles'
+import { COLORS, isMobile } from 'config/styles'
 import { Typography } from 'antd'
 import { MdNoFood } from 'react-icons/md'
 import { Link } from 'react-router-dom'
@@ -23,6 +23,9 @@ const PAGES_DATA = gql`
       id
       createdAt
       description {
+        raw
+      }
+      ingredients {
         raw
       }
       slug
@@ -52,7 +55,6 @@ const StyledRow = styled(Row)`
 const StyledLeftColumnWrapper = styled('div')`
   background-color: ${COLORS.primaryDark};
   padding: 0.5rem;
-  padding-bottom: 5rem;
 `
 
 const StyledSideBar = styled('div')`
@@ -133,15 +135,18 @@ const StyledLink = styled(Link)`
   font-weight: bold;
 `
 
-const StyledSideBarTitle = styled(Title)`
-  &.ant-typography  {
-    margin-bottom: 1rem;
-  }
+const StyledIngredientsList = styled('div')`
+  margin-bottom: 4rem;
+`
+
+const StyledOtherDishesContainer = styled('div')`
+  margin-top: 4rem;
 `
 
 type DishProps = {
   title?: string
   description?: any
+  ingredients?: any
   image?: any
   slug?: string
 }
@@ -156,11 +161,37 @@ const Dish = () => {
   const { called, data, loading } = response
 
   const dish: DishProps = data?.dish ?? {}
-  const { title, description, image } = dish
+  const { title, description, ingredients, image } = dish
 
   const wasNotFound = called && !loading && Object.keys(dish)?.length === 0
 
   const otherDishes = data?.dishes ?? []
+
+  const IngredientListComponent = () => {
+    return (
+      <StyledIngredientsList>
+        <Title level={1}>Zutaten:</Title>
+        <RichText
+          content={ingredients?.raw ?? []}
+          renderers={richTextRenderer}
+        />
+      </StyledIngredientsList>
+    )
+  }
+
+  const OtherDishesComponent = () => {
+    if (!otherDishes?.length) return null
+
+    return otherDishes.map((dish: DishProps) => (
+      <ContentBox
+        backgroundImage={dish?.image?.url}
+        title={dish?.title}
+        navigateTo={`${ROUTES.food}/${dish?.slug}`}
+        size={SIZES.small}
+        key={dish?.slug}
+      />
+    ))
+  }
 
   return (
     <>
@@ -179,6 +210,7 @@ const Dish = () => {
               </>
             </StyledImageWrapper>
             <StyledContent>
+              {isMobile ? <IngredientListComponent /> : null}
               {description?.raw ? (
                 <RichText
                   content={description?.raw ?? []}
@@ -198,22 +230,17 @@ const Dish = () => {
                   </Text>
                 </StyledNoFood>
               ) : null}
+              {!isMobile ? (
+                <StyledOtherDishesContainer>
+                  <OtherDishesComponent />
+                </StyledOtherDishesContainer>
+              ) : null}
             </StyledContent>
           </StyledLeftColumnWrapper>
         </Col>
         <Col xs={24} lg={8}>
           <StyledSideBar>
-            {otherDishes?.length ? (
-              <StyledSideBarTitle level={4}>Neue Gerichte:</StyledSideBarTitle>
-            ) : null}
-            {otherDishes.map((dish: DishProps) => (
-              <ContentBox
-                backgroundImage={dish?.image?.url}
-                title={dish?.title}
-                navigateTo={`${ROUTES.food}/${dish?.slug}`}
-                size={SIZES.small}
-              />
-            ))}
+            {isMobile ? <OtherDishesComponent /> : <IngredientListComponent />}
           </StyledSideBar>
         </Col>
       </StyledRow>

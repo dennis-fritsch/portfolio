@@ -16,16 +16,19 @@ const ImageNav = ({ currentRoute = ROUTES.home }: Props) => {
   `
   const imagesData = {
     portfolio: {
+      key: 0,
       backgroundImage: Portfolio,
       title: 'Portfolio',
       navigateTo: ROUTES.portfolio,
     },
     photography: {
+      key: 1,
       backgroundImage: Camera,
       title: 'Photography',
       navigateTo: ROUTES.photography,
     },
     food: {
+      key: 2,
       backgroundImage: Pizza,
       title: 'Food',
       navigateTo: ROUTES.food,
@@ -65,6 +68,7 @@ const ImageNav = ({ currentRoute = ROUTES.home }: Props) => {
               title={imageData.title}
               navigateTo={imageData.navigateTo}
               size={SIZES.small}
+              key={imageData?.key}
             />
           </Col>
         )

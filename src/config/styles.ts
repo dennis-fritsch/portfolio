@@ -52,3 +52,5 @@ export const BREAKPOINT_VALUES: BreakpointValueTypes = {
 export const getBreakpointInPixel = (breakpoint: GetBreakpointValueTypes) => {
   return `${BREAKPOINT_VALUES[breakpoint]}px`
 }
+
+export const isMobile = !!((window?.innerWidth ?? 1000) <= BREAKPOINT_VALUES.lg)

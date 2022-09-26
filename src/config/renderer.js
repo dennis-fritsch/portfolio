@@ -22,11 +22,7 @@ export const richTextRenderer = {
   bold: ({ children }) => <strong>{children}</strong>,
   p: ({ children }) => <Text>{children}</Text>,
   table: ({ children }) => <StyledTable>{children}</StyledTable>,
-  table_cell: ({ children }) => {
-    console.log('children', children)
-    return <StyledCell>{children}</StyledCell>
-  },
-
+  table_cell: ({ children }) => <StyledCell>{children}</StyledCell>,
   code: ({ children }) => (
     <Text
       style={{
