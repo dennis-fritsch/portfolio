@@ -1,9 +1,20 @@
 import { Helmet } from 'react-helmet-async'
 import { COLORS } from 'config/styles'
+import { capitalizeFirstLetter } from 'config/helper'
+import { useLocation } from 'react-router-dom'
 
-export default () => {
+const HelmetComponent = () => {
+  const location = useLocation()
+  const pathSplitted =
+    typeof location?.pathname === 'string' ? location.pathname.split('/') : []
+  const path = pathSplitted?.length > 1 ? pathSplitted[1] : null
+
   return (
     <Helmet>
+      <title>
+        {path ? capitalizeFirstLetter({ string: path }) : 'Portfolio'} - Dennis
+        Fritsch
+      </title>
       <style>
         {`
           body { 
@@ -36,3 +47,5 @@ export default () => {
     </Helmet>
   )
 }
+
+export default HelmetComponent

@@ -21,9 +21,9 @@ export default function App() {
   return (
     <HelmetProvider>
       <StyledAppWrapper>
-        <Helmet />
         <StyledHeader />
         <Router>
+          <Helmet />
           <StyledLayout>
             <Content>
               <Row>
