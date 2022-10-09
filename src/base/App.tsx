@@ -6,7 +6,7 @@ import { Row, Col } from 'antd'
 import { COLORS } from 'config/styles'
 import { ROUTES } from 'navigation/routes'
 import styled from 'styled-components'
-import { Helmet } from 'react-helmet'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import Footer from 'components/Footer'
 import NavBar from 'components/NavBar'
 import './animate.css'
@@ -44,10 +44,11 @@ const StyledMainContent = styled('div')`
 
 export default function App() {
   return (
-    <StyledAppWrapper>
-      <Helmet>
-        <style>
-          {`
+    <HelmetProvider>
+      <StyledAppWrapper>
+        <Helmet>
+          <style>
+            {`
           body { 
             background-color: ${COLORS.primaryDark};
           }
@@ -74,29 +75,30 @@ export default function App() {
             color: ${COLORS.white}
           }
         `}
-        </style>
-      </Helmet>
-      <StyledHeader />
-      <Router>
-        <StyledLayout>
-          <Content>
-            <Row>
-              <Col
-                xs={{ span: 22, offset: 1 }}
-                sm={{ span: 20, offset: 2 }}
-                lg={{ span: 18, offset: 3 }}
-                xxl={{ span: 16, offset: 4 }}
-              >
-                <NavBar />
-                <StyledMainContent>
-                  <Navigation />
-                </StyledMainContent>
-              </Col>
-            </Row>
-          </Content>
-        </StyledLayout>
-      </Router>
-      <Footer />
-    </StyledAppWrapper>
+          </style>
+        </Helmet>
+        <StyledHeader />
+        <Router>
+          <StyledLayout>
+            <Content>
+              <Row>
+                <Col
+                  xs={{ span: 22, offset: 1 }}
+                  sm={{ span: 20, offset: 2 }}
+                  lg={{ span: 18, offset: 3 }}
+                  xxl={{ span: 16, offset: 4 }}
+                >
+                  <NavBar />
+                  <StyledMainContent>
+                    <Navigation />
+                  </StyledMainContent>
+                </Col>
+              </Row>
+            </Content>
+          </StyledLayout>
+        </Router>
+        <Footer />
+      </StyledAppWrapper>
+    </HelmetProvider>
   )
 }

@@ -48,16 +48,18 @@ const Food = () => {
     <>
       <StyledSideBarTitle level={4}>Neue Gerichte:</StyledSideBarTitle>{' '}
       <Row gutter={8}>
-        {lastDishes.map((dish: DishProps) => (
-          <Col xs={12} sm={8}>
-            <ContentBox
-              backgroundImage={dish?.image?.url}
-              title={dish?.title}
-              navigateTo={`${ROUTES.food}/${dish?.slug}`}
-              size={SIZES.small}
-            />
-          </Col>
-        ))}
+        {lastDishes.map((dish: DishProps) => {
+          return (
+            <Col xs={12} sm={8} key={dish?.slug}>
+              <ContentBox
+                backgroundImage={dish?.image?.url}
+                title={dish?.title}
+                navigateTo={`${ROUTES.food}/${dish?.slug}`}
+                size={SIZES.small}
+              />
+            </Col>
+          )
+        })}
       </Row>
       <ImageNav currentRoute={ROUTES.food} />
     </>

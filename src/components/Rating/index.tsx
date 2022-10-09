@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import { Typography, Rate } from 'antd'
-import { GiPlainCircle } from 'react-icons/gi'
 import { COLORS } from 'config/styles'
 
-const { Text, Link } = Typography
+const { Text } = Typography
 
 type RatingTypes = {
   title: string
@@ -26,7 +25,6 @@ const Rating = ({ title, value, disabled }: RatingTypes) => {
       <Rate
         allowHalf
         value={value}
-        character={GiPlainCircle}
         disabled={disabled}
         style={{ color: COLORS.secondaryDark }}
       />

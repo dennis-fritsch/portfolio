@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
+
 import App from 'base/App'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 
@@ -8,11 +9,13 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container!)
+
+root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 )
