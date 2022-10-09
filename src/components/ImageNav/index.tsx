@@ -62,7 +62,7 @@ const ImageNav = ({ currentRoute = ROUTES.home }: Props) => {
     <StyledRow gutter={8} className="animate slide delay-2">
       {displayImages.map((imageData) => {
         return (
-          <Col xs={24} sm={24 / displayImages.length}>
+          <Col xs={24} sm={24 / displayImages.length} key={imageData?.key}>
             <ContentBox
               backgroundImage={imageData.backgroundImage}
               title={imageData.title}
