@@ -1,14 +1,11 @@
-import styled from 'styled-components'
-import { Card, Typography } from 'antd'
-import { COLORS } from 'config/styles'
+import { SIZES } from 'config/enums'
 import { useNavigate } from 'react-router-dom'
-
-const { Title } = Typography
-
-export enum SIZES {
-  small = 'small',
-  medium = 'medium',
-}
+import {
+  StyledBox,
+  StyledGradient,
+  StyledImage,
+  StyledTitle,
+} from './styledComponents'
 
 type Props = {
   style?: React.CSSProperties
@@ -29,44 +26,6 @@ const ContentBox = ({
 }: Props) => {
   const navigate = useNavigate()
 
-  const StyledBox = styled(Card)`
-    background-color: ${COLORS.primaryLight};
-    border-radius: 0.5rem;
-    overflow: hidden;
-    border-color: ${COLORS.primary};
-    height: ${size === SIZES.small ? '8' : '12'}rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-  `
-
-  const Gradient = styled('div')`
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 5rem;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    z-index: 2;
-  `
-
-  const StyledImage = styled('div')`
-    background-image: url(${backgroundImage});
-    background-size: cover;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-  `
-
   const handleClick = () => {
     if (navigateTo) {
       navigate(navigateTo)
@@ -77,6 +36,7 @@ const ContentBox = ({
 
   return (
     <StyledBox
+      size={size}
       hoverable={!!navigateTo || !!linkTo}
       bodyStyle={{
         padding: 0,
@@ -84,24 +44,11 @@ const ContentBox = ({
       style={style || {}}
       onClick={handleClick}
     >
-      <Gradient />
+      <StyledGradient />
       {title && (
-        <Title
-          level={size === SIZES.small ? 4 : 3}
-          style={{
-            color: '#fff',
-            textAlign: 'center',
-            zIndex: 3,
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-          }}
-        >
-          {title}
-        </Title>
+        <StyledTitle level={size === SIZES.small ? 4 : 3}>{title}</StyledTitle>
       )}
-      <StyledImage />
+      <StyledImage backgroundImage={backgroundImage} />
     </StyledBox>
   )
 }

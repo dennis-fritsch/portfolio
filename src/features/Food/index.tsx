@@ -1,35 +1,11 @@
 import { Row, Col } from 'antd'
-import styled from 'styled-components'
 import ImageNav from 'components/ImageNav'
 import { ROUTES } from 'navigation/routes'
-import { useQuery, gql } from '@apollo/client'
-import { Typography } from 'antd'
-import ContentBox, { SIZES } from 'components/ContentBox'
-
-const { Title } = Typography
-
-const PAGES_DATA = gql`
-  query PageQuery {
-    dishes(first: 12, orderBy: publishedAt_ASC) {
-      slug
-      title
-      description {
-        raw
-      }
-      createdAt
-      image {
-        url
-      }
-    }
-  }
-`
-
-const StyledSideBarTitle = styled(Title)`
-  &.ant-typography  {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-`
+import { useQuery } from '@apollo/client'
+import ContentBox from 'components/ContentBox'
+import { SIZES } from 'config/enums'
+import { StyledSideBarTitle } from './styledComponents'
+import { dishesQuery } from './queries'
 
 type DishProps = {
   title?: string
@@ -39,9 +15,9 @@ type DishProps = {
 }
 
 const Food = () => {
-  const response = useQuery(PAGES_DATA)
+  const response = useQuery(dishesQuery)
 
-  const { called, data, loading } = response
+  const { data } = response
   const lastDishes = data?.dishes ?? []
 
   return (

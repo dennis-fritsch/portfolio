@@ -3,7 +3,7 @@ import { Row } from 'antd'
 import { COLORS } from 'config/styles'
 import { Typography } from 'antd'
 
-const { Title, Text } = Typography
+const { Title } = Typography
 
 export const StyledRow = styled(Row)`
   margin-top: 1rem;
@@ -59,7 +59,7 @@ export const StyledTitle = styled(Title)`
   text-align: center;
 `
 
-export const Gradient = styled('div')`
+export const StyledGradient = styled('div')`
   position: absolute;
   left: 0;
   right: 0;

@@ -1,8 +1,6 @@
 import { Anchor, Row, Col, Typography } from 'antd'
-import styled from 'styled-components'
 import ImageNav from 'components/ImageNav'
 import { ROUTES } from 'navigation/routes'
-import { COLORS } from 'config/styles'
 import Rating from 'components/Rating'
 import Avatar from 'components/Avatar'
 import AvatarImageEhoi from 'assets/avatar/e-hoi.png'
@@ -10,27 +8,11 @@ import AvatarImageApicodo from 'assets/avatar/apicodo.png'
 import { useWindowDimensions } from 'config/hooks'
 import { BREAKPOINT_VALUES } from 'config/styles'
 
+import { StyledAnchor, StyledSection, StyledHeadline } from './styledComponents'
+
 const { Title, Text } = Typography
 
 const { Link } = Anchor
-
-// TODO: Skill dots look weird on mobile
-
-const StyledSection = styled('div')`
-  margin-bottom: 2rem;
-  background-color: ${COLORS.primaryDark};
-  padding: 1rem;
-`
-
-const StyledHeadline = styled(Title)`
-  margin-left: 1rem;
-`
-
-const StyledAnchor = styled(Anchor)`
-  margin-bottom: 2rem;
-  background-color: ${COLORS.primaryDark};
-  padding: 0.5rem;
-`
 
 const Portfolio = () => {
   const { width } = useWindowDimensions()
@@ -149,7 +131,6 @@ const Portfolio = () => {
           </StyledSection>
         </Col>
       </Row>
-
       <ImageNav currentRoute={ROUTES.portfolio} />
     </>
   )

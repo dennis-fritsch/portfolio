@@ -6,7 +6,8 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { RichText } from '@graphcms/rich-text-react-renderer'
 import { isMobile } from 'config/styles'
-import ContentBox, { SIZES } from 'components/ContentBox'
+import ContentBox from 'components/ContentBox'
+import { SIZES } from 'config/enums'
 import DishNotFound from './components/NotFound'
 import IngredientList from './components/IngredientList'
 import {
@@ -16,7 +17,7 @@ import {
   StyledTitle,
   StyledImage,
   StyledImageSkeleton,
-  Gradient,
+  StyledGradient,
   StyledContent,
   StyledPlaceholder,
   StyledOtherDishesContainer,
@@ -77,7 +78,7 @@ const Dish = () => {
                 ) : loading ? (
                   <StyledImageSkeleton />
                 ) : null}
-                {!wasNotFound ? <Gradient /> : null}
+                {!wasNotFound ? <StyledGradient /> : null}
               </>
             </StyledImageWrapper>
             <StyledContent>

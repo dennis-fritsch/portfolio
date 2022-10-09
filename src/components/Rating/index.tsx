@@ -1,8 +1,6 @@
-import styled from 'styled-components'
-import { Typography, Rate } from 'antd'
+import { Rate } from 'antd'
 import { COLORS } from 'config/styles'
-
-const { Text } = Typography
+import { StyledRow, StyledTitle } from './styledComponents'
 
 type RatingTypes = {
   title: string
@@ -11,14 +9,6 @@ type RatingTypes = {
 }
 
 const Rating = ({ title, value, disabled }: RatingTypes) => {
-  const StyledRow = styled('div')`
-    display: flex;
-  `
-  const StyledTitle = styled(Text)`
-    font-size: 1.25rem;
-    flex: 1;
-  `
-
   return (
     <StyledRow>
       <StyledTitle>{title}</StyledTitle>
